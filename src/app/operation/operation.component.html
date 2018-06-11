@@ -1,0 +1,21 @@
+<div class="row">
+<div class=col-md-6>
+    <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                (click)="showMethodDropdown=!showMethodDropdown"> {{selectedHTTPMethod}} </button>
+            <div class="dropdown-menu" [ngClass]="{'show':showMethodDropdown}">
+                <a class="dropdown-item" (click)="selectHTTPMethod('GET');">GET</a>
+                <a class="dropdown-item" (click)="selectHTTPMethod('POST');">POST</a>
+            </div>
+        </div>
+        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter URL" #url>
+    </div>
+</div>
+<!-- Send and Cancel Buttons -->
+<div class=col-md-6>
+    <button class="large blue ui button" [ngClass]="{'loading':isLoading}" (click)="loadURL(url)">Send</button>
+    <button class="large grey ui button" [hidden]="!isLoading" (click)="cancelLoading()">Cancel</button>
+</div>
+</div>
+

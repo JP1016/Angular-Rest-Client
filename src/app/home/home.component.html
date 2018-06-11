@@ -1,0 +1,34 @@
+<!-- NavBar Start -->
+<app-header></app-header>
+<!-- NavBar End -->
+
+<div style="margin-top: 70px;"></div>
+<!-- <prism-block [code]="request.response" [language]="getLanguage()"></prism-block> -->
+{{request.response}}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <!-- Input Group to Select GET/POST along with Send and Cancel Button -->
+    <div class="col-md-8">
+    <app-operation (data)="fetchRequest($event)"></app-operation>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+<div style="margin-top: 80px;"></div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-5">
+    <h4>
+      <i class="fa fa-arrow-up"> REQUEST</i>
+    </h4>
+    <app-iocomponent (payloadChanged)="payloadChanged($event)" [hidden]="request.getInstance().method=='GET'"></app-iocomponent>
+  </div>
+  <div class="col-md-5">
+    <h4>
+      <i class="fa fa-arrow-down"> RESPONSE</i>
+    </h4>
+    <app-iocomponent>{{request.response}}</app-iocomponent>
+  </div>
+  <div class="col-md-1"></div>
+</div>
